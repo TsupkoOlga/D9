@@ -1,5 +1,6 @@
 from django_filters import FilterSet, ModelMultipleChoiceFilter
-from .models import Post, User
+from .models import Post, User, Category
+
 
 # Создаем свой набор фильтров для модели Post.
 # FilterSet, который мы наследуем,
@@ -9,6 +10,12 @@ class PostFilter(FilterSet):
       field_name = 'author__user',
       queryset = User.objects.all(),
       label = 'Author',
+   )
+
+   category = ModelMultipleChoiceFilter(
+       field_name = 'postcategory__category',
+       queryset = Category.objects.all(),
+       label = 'Category',
    )
 
    class Meta:

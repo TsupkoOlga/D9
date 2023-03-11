@@ -7,6 +7,9 @@ class Author(models.Model):
     rating = models.IntegerField(default = 0)
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 
+    def __str__(self):
+        return self.user.username
+
     def update_rating(self):
         sum = 0
 
@@ -33,6 +36,9 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length = 63, unique = True)
+
+    def __str__(self):
+        return self.name
 
 
 

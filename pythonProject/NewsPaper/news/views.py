@@ -1,7 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Post
 from .filters import PostFilter
+from .forms import PostForm
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -41,5 +43,15 @@ class PostDetail(DetailView):
     template_name = 'post.html'
     # Название объекта, в котором будет выбранный пользователем пост
     context_object_name = 'post'
+
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        form.save()
+        return HttpResponseRedirect('/news/')
+
+    form = PostForm()
+    return render(request, 'post_edit.html', {'form': form})
+
 
 
