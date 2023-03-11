@@ -27,7 +27,6 @@ class PostFilter(FilterSet):
        fields = {
            # поиск по названию
            'title': ['icontains'],
-           # 'author__user': ['exact'],
            # время должно быть больше или равно
            # 'quantity': ['gt'],
        }
