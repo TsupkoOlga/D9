@@ -12,7 +12,18 @@
     {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
     <form action="" method="get">
         {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
-        {{ filterset.form.as_p }}
+
+        <p>
+            <label for="id_title__icontains">Title contains:</label>
+            <input type="text" name="title__icontains" id="id_title__icontains">
+        </p>
+        <p>{{ filterset.form.author }}</p>
+        <p>
+            <label for="id_time_in">Start date:</label>
+            <input type="date" name="time_in" id="id_time_in"
+                   value="2023-03-10">
+        </p>
+
         {# Добавим кнопку отправки данных формы #}
         <input type="submit" value="Найти" />
     </form>
