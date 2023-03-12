@@ -1,11 +1,15 @@
 from django.urls import path
-# Импортируем созданное нами представление
-from .views import PostsList, PostDetail, PostCreate, PostUpdate, PostDelete
+from .views import PostsList, PostDetail, PostCreate, PostUpdate, PostDelete, SearchList
 
 urlpatterns = [
-    path('', PostsList.as_view(), name = 'post_list'),
-    path('<int:pk>', PostDetail.as_view(), name = 'post_detail'),
-    path('create/', PostCreate.as_view(), name = 'post_create'),
-    path('<int:pk>/edit/', PostUpdate.as_view(), name='post_update'),
-    path('<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
+    path('news/', PostsList.as_view(), name = 'post_list'),
+    path('news/<int:pk>', PostDetail.as_view(), name = 'news_detail'),
+    path('news/search/', SearchList.as_view(), name = 'search_list'),
+    path('news/create/', PostCreate.as_view(), name = 'post_create'),
+    path('news/<int:pk>/edit/', PostUpdate.as_view(), name='post_update'),
+    path('news/<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
+    path('articles/<int:pk>', PostDetail.as_view(), name = 'articles_detail'),
+    path('articles/create/', PostCreate.as_view(), name = 'post_create'),
+    path('articles/<int:pk>/edit/', PostUpdate.as_view(), name='post_update'),
+    path('articles/<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
 ]

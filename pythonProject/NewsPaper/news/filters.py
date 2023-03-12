@@ -12,11 +12,11 @@ class PostFilter(FilterSet):
       label = 'Author',
    )
 
-   category = ModelMultipleChoiceFilter(
-       field_name = 'postcategory__category',
-       queryset = Category.objects.all(),
-       label = 'Category',
-   )
+   # category = ModelMultipleChoiceFilter(
+   #    field_name = 'postcategory__category',
+   #    queryset = Category.objects.all(),
+   #    label = 'Category',
+   #)
 
    class Meta:
        # В Meta классе мы должны указать Django модель,
