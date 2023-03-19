@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i1k^32sc(06+qxa(d$z3a7vkw=$b!@e)a&krtguea1_zo=t)0k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'news',
+    'sign',
     'django_filters',
     'allauth',
     'allauth.account',
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/news/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -152,3 +155,5 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_FORMS = {'signup': 'sign.forms.CommonSignupForm'}
