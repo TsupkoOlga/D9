@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/news/'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 SITE_ID = 1
 
