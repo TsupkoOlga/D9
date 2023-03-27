@@ -10,9 +10,14 @@
 {% block content %}
     <h1>Все публикации</h1>
     <!-- Выводим посты, только если они есть с помощью тега if -->
+    {% if is_not_subscriber %}
+        <p class="text-center">
+            <a href="{% url 'subscribe' category.id %}" class="btn btn-secondary btn-sm">Подписаться</a>
+        </p>
+    {% endif %}
 
     <hr>
-    {% if posts %}
+    {% if category_news_list %}
         <table> <!-- Начинаем описывать таблицу -->
             <tr> <!-- Добавляем строку -->
                 <td> <!-- Добавляем ячейку в строку -->
@@ -30,7 +35,7 @@
             </tr> <!-- Не забываем закрыть HTML-тег строки -->
             <!-- Для каждой публикации будет генерироваться новая строчка,
             т.е. новый HTML код, который указан в теле цикла. -->
-            {% for post in posts %}
+            {% for post in category_news_list %}
             <tr>
                 <td>{{ post.title|censor }}</td>
                 <td>
